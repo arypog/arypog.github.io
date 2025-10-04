@@ -1,102 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>carpe diem</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="ico.ico">
-    <style>
-      table, th, td {
-        border: 5px solid rgb(0, 0, 0);
-        border-collapse: collapse;
-      }
-    </style>
-  </head>
 
-  <body>
-    <div id="Layer1"
-      style="position:absolute; width:800px; height:1000px; z-index:0; border: 1px none #000000; left: 0px; top: 0px">
-      <table width="900" cellspacing="3" cellpadding="3" align="left">
-        <tbody>
-          <tr>
-            <td align="center" valign="middle">
-              <audio controls autoplay style="width: 100%;">
-                <source src="ErikSatie1893DansesGothiques.ogg" type="audio/ogg">
-                <source src="ErikSatie1893DansesGothiques.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-              </audio>
-            </td>
-            <td align="center" valign="middle" rowspan="2" colspan="2" style="background-color: #f8ba71;">
-              <br>
-              Mail me here →<a href="mailto:YXJ5@proton.me" style="text-decoration: none; color: inherit;">
-                <img alt="" src="post_no.jpg" width="40" height="40" border="0">
-              </a><br>
-              <br>
-            </td>
-          </tr>
-          <tr>
-            <td rowspan="2" align="center" valign="middle" 
-            style="background-image: url(lake.jpg); background-size: cover;">
-            </td>
-          </tr>
-          <tr>
-            <td align="center" valign="middle" colspan="2" rowspan="2">
-              <br>
-              <div style="width: 300px; text-align: left;" id="poem-text">
-                <p>
-                  The Brain—is wider than the Sky— <br>
-                  For—put them side by side— <br>
-                  The one the other will contain <br>
-                  With ease—and you—beside— <br><br>
-                  The Brain is deeper than the sea— <br>
-                  For—hold them—Blue to Blue— <br>
-                  The one the other will absorb— <br>
-                  As sponges—Buckets—do— <br><br>
-                  The Brain is just the weight of God— <br>
-                  For—Heft them—Pound for Pound— <br>
-                  And they will differ—if they do— <br>
-                  As Syllable from Sound— <br><br>
-                  Emily Dickinson, c. 1862
-                </p>
-              </div>
-              <br>
-            </td>
-          </tr>
-          <tr>
-              <td align="center" valign="middle" rowspan="2" style="background-color: #f8ba71;">
-              </td>
-          </tr>
-          <tr>
-            <td align="center" valign="middle" style="background-color: #8ddaea;">
-              
-            </td>
-            <td align="center" valign="middle" >
-              <a href="https://github.com/arypog">
-                <img src="github.png" alt="" height="100" width="100">
-              </a>
-            </td>
-          </tr>
-          <!--
-<tr>
-<td align="center" valign="top">
-<table border="0" width="660" cellspacing="0" cellpadding="0" align="center">
-<tbody>
-<tr>
-<td align="center" valign="middle">
-<h2> News: </h2>
-</td>
-<td align="center" valign="middle" width="500">
-sexa nexa prexa
-</td>
-</tr>
-</tbody>
-</table>
-</td>
-</tr>
--->
-        </tbody>
-      </table>
-    </div>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ary</title>
+  <link rel="icon" type="image/x-icon" href="a.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --background: #794B4B;
+      --foreground: #FFFFFF;
+      --border-color: #CA931C;
+    }
+
+    * {
+      font-family: "Space Mono", monospace;
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--foreground);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    a {
+      color: var(--foreground);
+      text-decoration-style: dotted;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    li {
+      position: relative;
+      padding-left: 20px;
+      cursor: pointer;
+    }
+
+    /* Tree visuals */
+    li::before {
+      content: "├─ ";
+      position: absolute;
+      left: 0;
+    }
+
+    li:last-child::before {
+      content: "└─ ";
+    }
+
+    ul ul li::before {
+      content: "├─ ";
+    }
+
+    ul ul li:last-child::before {
+      content: "└─ ";
+    }
+
+    li.has-children::before {
+      content: "▸ ";
+    }
+
+    li.has-children.expanded::before {
+      content: "▾ ";
+    }
+
+    li.has-children>ul {
+      display: none;
+    }
+
+    li.filesystem-text::before {
+      content: "";
+      position: static;
+    }
+
+    li.filesystem-text {
+      white-space: normal;
+      padding-left: 0;
+      cursor: default;
+    }
+
+    #info {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 20px;
+    }
+
+    #filesystem {
+      border: 3px solid var(--border-color);
+      padding: 20px;
+      width: 500px;
+      max-height: 480px;
+      overflow-y: auto;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+        gap: 10px;
+      }
+
+      #filesystem {
+        width: 90%;
+        max-width: 400px;
+        max-height: 70vh;
+        padding: 15px;
+        font-size: 0.9rem;
+      }
+
+
+    }
+
+    @media (max-width: 480px) {
+      #filesystem {
+        width: 100%;
+        max-width: none;
+        border-width: 2px;
+        font-size: 0.85rem;
+        padding: 12px;
+      }
+
+      li {
+        padding-left: 15px;
+      }
+
+      ul {
+        padding-left: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="info">
+    <h3 id="name-date">ARY GOMES DA COSTA</h3>
+    <p><a href="https://www.linkedin.com/in/arypog" target="_blank">linkedin/arypog</a></p>
+    <p><a href="https://github.com/arypog" target="_blank">github/arypog</a></p>
+    <p><a href="https://www.youtube.com/@arypog" target="_blank">youtube/arypog</a></p>
+    <p><a href="mailto:YXJ5@proton.me">YXJ5@proton.me</a></p>
+    <p><a href="curriculo_pt_en.pdf" target="_blank">resume</a></p>
+  </div>
+
+  <div id="filesystem">
+    <p>Projects:</p>
+    <ul id="tree"></ul>
+  </div>
+
+  <script>
+    function updateDateTime() {
+      const now = new Date();
+      const formatted = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} `
+        + `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+      document.getElementById('name-date').textContent = "ARY GOMES DA COSTA " + formatted;
+    }
+    updateDateTime();
+    setInterval(updateDateTime, 1000);
+
+    function createProjectNode(project) {
+      const li = document.createElement("li");
+      li.textContent = project.name;
+      li.classList.add("has-children");
+
+      const ul = document.createElement("ul");
+
+      if (project.Description) {
+        const descLi = document.createElement("li");
+        descLi.textContent = project.Description;
+        descLi.classList.add("filesystem-text");
+        ul.appendChild(descLi);
+      }
+
+      if (project.Languages && project.Languages.length > 0) {
+        const langLi = document.createElement("li");
+        langLi.classList.add("has-children");
+        langLi.textContent = "Languages";
+        const langUl = document.createElement("ul");
+        project.Languages.forEach(lang => {
+          const l = document.createElement("li");
+          l.textContent = lang;
+          langUl.appendChild(l);
+        });
+        langLi.appendChild(langUl);
+        ul.appendChild(langLi);
+      }
+
+      if (project.LinkToRepo) {
+        const linkLi = document.createElement("li");
+        const a = document.createElement("a");
+        a.href = project.LinkToRepo;
+        a.target = "_blank";
+        a.textContent = "repository";
+        linkLi.appendChild(a);
+        ul.appendChild(linkLi);
+      }
+
+
+      li.appendChild(ul);
+      return li;
+    }
+
+    function addToggleHandlers() {
+      document.querySelectorAll('li.has-children').forEach(parent => {
+        parent.addEventListener('click', e => {
+          if (e.target !== e.currentTarget) return; // only if parent clicked
+          const sublist = parent.querySelector(':scope > ul');
+          if (!sublist) return;
+          const isVisible = sublist.style.display === 'block';
+          sublist.style.display = isVisible ? 'none' : 'block';
+          parent.classList.toggle('expanded', !isVisible);
+          e.stopPropagation();
+        });
+      });
+    }
+
+    fetch("projects.json")
+      .then(res => res.json())
+      .then(data => {
+        const tree = document.getElementById("tree");
+        data.forEach(project => {
+          tree.appendChild(createProjectNode(project));
+        });
+        addToggleHandlers();
+      })
+      .catch(err => console.error("Error loading JSON:", err));
+  </script>
+</body>
+
 </html>
+
+<!--
+    {
+        "name": "Lost Cow2",
+        "Description": "Scratch game2, which its goal is to guide the lost snail to its home.",
+        "Languages": ["CSS", "HTML", "JavaScript"], 
+        "LinkToRepo": "https://github.com/arypog/lostcow2"
+    }
+-->
