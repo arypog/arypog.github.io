@@ -5,15 +5,45 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ary</title>
-  <link rel="icon" type="image/x-icon" href="assets/ico.ico">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="assets/icon.ico?v=2">
   <style>
+    @font-face {
+      font-family: 'Space Mono';
+      src: url('assets/font/SpaceMono-Regular.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Space Mono';
+      src: url('assets/font/SpaceMono-Italic.ttf') format('truetype');
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    @font-face {
+      font-family: 'Space Mono';
+      src: url('assets/font/SpaceMono-Bold.ttf') format('truetype');
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Space Mono';
+      src: url('assets/font/SpaceMono-BoldItalic.ttf') format('truetype');
+      font-weight: 700;
+      font-style: italic;
+    }
+
+
+    /* Colors: https://colors.artyclick.com/color-palette-generator-from-image/ */
     :root {
-      --background: #794B4B;
-      --foreground: #FFFFFF;
-      --border-color: #CA931C;
+       /* --background: #BF3A44; /* Dull Red */
+      --background: #57201C; /* Espresso */
+      --foreground: #F8EAE0; /* Dawn Pink */
+      --border-color: var(--foreground);
+     
+     
     }
 
     * {
@@ -33,6 +63,8 @@
       min-height: 100vh;
       padding: 20px;
       gap: 20px;
+
+      
     }
 
     a {
