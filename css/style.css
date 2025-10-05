@@ -1,0 +1,180 @@
+@font-face {
+    font-family: 'Space Mono';
+    src: url('assets/font/SpaceMono-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Space Mono';
+    src: url('assets/font/SpaceMono-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Space Mono';
+    src: url('assets/font/SpaceMono-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Space Mono';
+    src: url('assets/font/SpaceMono-BoldItalic.ttf') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+}
+
+
+/* Colors: https://colors.artyclick.com/color-palette-generator-from-image/ */
+:root {
+    --background: #BF3A44; /* Dull Red */
+    /* --background: #57201C; /* Espresso */
+    /* Espresso */
+    --foreground: #F8EAE0;
+    /* Dawn Pink */
+    --border-color: var(--foreground);
+
+
+}
+
+* {
+    font-family: "Space Mono", monospace;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--foreground);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    gap: 20px;
+
+
+}
+
+a {
+    color: var(--foreground);
+    text-decoration-style: dotted;
+}
+
+ul {
+    list-style: none;
+    padding-left: 20px;
+    position: relative;
+}
+
+li {
+    position: relative;
+    padding-left: 20px;
+    cursor: pointer;
+}
+
+/* Tree visuals */
+li::before {
+    content: "├─ ";
+    position: absolute;
+    left: 0;
+}
+
+li:last-child::before {
+    content: "└─ ";
+}
+
+ul ul li::before {
+    content: "├─ ";
+}
+
+ul ul li:last-child::before {
+    content: "└─ ";
+}
+
+li.has-children::before {
+    content: "▸ ";
+}
+
+li.has-children.expanded::before {
+    content: "▾ ";
+}
+
+li.has-children>ul {
+    display: none;
+}
+
+li.filesystem-text::before {
+    content: "";
+    position: static;
+}
+
+li.filesystem-text {
+    white-space: normal;
+    padding-left: 0;
+    cursor: default;
+}
+
+#info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px;
+}
+
+#filesystem {
+    border: 3px solid var(--border-color);
+    padding: 20px;
+    width: 500px;
+    max-height: 480px;
+    overflow-y: auto;
+}
+
+canvas#canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+        gap: 10px;
+    }
+
+    #filesystem {
+        width: 90%;
+        max-width: 400px;
+        max-height: 70vh;
+        padding: 15px;
+        font-size: 0.9rem;
+    }
+
+
+}
+
+@media (max-width: 480px) {
+    #filesystem {
+        width: 100%;
+        max-width: none;
+        border-width: 2px;
+        font-size: 0.85rem;
+        padding: 12px;
+    }
+
+    li {
+        padding-left: 15px;
+    }
+
+    ul {
+        padding-left: 15px;
+    }
+}
